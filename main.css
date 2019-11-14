@@ -12,3 +12,7 @@ body{
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
 }
+
+.selected{
+    background: rgb(80, 212, 80);
+}
