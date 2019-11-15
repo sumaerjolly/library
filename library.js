@@ -30,11 +30,10 @@ function render(table, library) {
         if(key === "status"){
             let button = document.createElement("BUTTON");
             button.innerHTML = book[key];
+            button.classList.add("statusButton")
             cell.appendChild(button);
             let deleteCell = document.createElement("BUTTON");
             deleteCell.innerHTML = "Delete";
-            deleteCell.style.background = "red";
-            deleteCell.style.color = "white";
             deleteCell.classList.add("delete");
             cell.appendChild(deleteCell);
             
@@ -49,7 +48,7 @@ function render(table, library) {
 }
   let table = document.querySelector("table");
   render(table, myLibrary);
-  let selectedButton = document.querySelectorAll("button")
+  let statusButton = document.querySelectorAll(".statusButton")
   
 //   for(let i = 0; i < selectedButton.length; i++){
 //     selectedButton[i].addEventListener("click",function(){
@@ -67,10 +66,11 @@ function render(table, library) {
 
 //read unread fucntionality 
 
-  selectedButton.forEach(btn => btn.addEventListener("click", function(){
+  statusButton.forEach(btn => btn.addEventListener("click", function(){
     if(this.textContent == "read"){
         this.classList.remove("selected");
         this.textContent = "unread";
+        
     }
     else{
         this.classList.add("selected");
@@ -91,10 +91,48 @@ deleteItems.forEach(function(item){
     })
 })
 
-  
+// display a form
 
+//function addForm() {
+//   const bookForm = document.createElement("FORM");
+//   bookForm.setAttribute("id", "myForm");
+//   document.body.appendChild(bookForm);
 
+//   const titleLabel = document.createElement("label");
+//   titleLabel.textContent = "Book title:"
+//   titleLabel.addClassName("label");
+//   //title.setAttribute("for", "bookTitle");
+//   document.getElementById("myForm").appendChild(titleLabel);
 
+//   const title = document.createElement("INPUT");
+//   //title.setAttribute("id", "bookTitle");
+//   title.setAttribute("type", "text");
+//   title.setAttribute("placeholder","Add book title");
+//   document.getElementById("myForm").appendChild(title);
+
+//   const author = document.createElement("INPUT");
+//   author.setAttribute("type", "text");
+//   author.setAttribute("placeholder","Add author name");
+//   document.getElementById("myForm").appendChild(author);
+// }
+
+//addForm();
+
+//Show the book form
+let hiddenForm = document.querySelector(".hiddenForm")
+let addButton = document.querySelector(".add");
+let showForm = function(){
+  hiddenForm.style.display = "block";
+}
+addButton.addEventListener("click", showForm)
+
+//Hide the form data
+
+let cancelButton = document.querySelector(".cancel");
+let hideForm = function(){
+  hiddenForm.style.display = "none";
+}
+cancelButton.addEventListener("click", hideForm)
 
 
 // addButton.addEventListener("click",function(){
