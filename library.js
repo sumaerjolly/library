@@ -48,21 +48,21 @@ render(table, myLibrary);
 
 // Add a book to the table method
 function addToTable(table, book) {
-  let row = table.insertRow();
+  const row = table.insertRow();
   for (let key in book) {
-    let cell = row.insertCell();
-    if(key === "status"){
-        let button = document.createElement("BUTTON");
-        button.innerHTML = book[key];
-        if (button.innerHTML === "read"){
-            button.classList.add("selected");
-        }
-        button.classList.add("statusButton")
-        cell.appendChild(button);
-        const deleteCell = document.createElement('BUTTON');
-        deleteCell.innerHTML = 'Delete';
-        deleteCell.classList.add('delete');
-        cell.appendChild(deleteCell);
+    const cell = row.insertCell();
+    if (key === 'status') {
+      let button = document.createElement("BUTTON");
+      button.innerHTML = book[key];
+      if (button.innerHTML === "read"){
+        button.classList.add("selected");
+      }
+      button.classList.add("statusButton")
+      cell.appendChild(button);
+      const deleteCell = document.createElement('BUTTON');
+      deleteCell.innerHTML = 'Delete';
+      deleteCell.classList.add('delete');
+      cell.appendChild(deleteCell);
             
     }else {
         const text = document.createTextNode(book[key]);
