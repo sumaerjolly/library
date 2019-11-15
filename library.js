@@ -48,6 +48,10 @@ function render(table, library) {
 }
   let table = document.querySelector("table");
   render(table, myLibrary);
+
+  function addToTable(table,book){
+    
+  }
   let statusButton = document.querySelectorAll(".statusButton")
   
 //   for(let i = 0; i < selectedButton.length; i++){
@@ -143,5 +147,23 @@ cancelButton.addEventListener("click", hideForm)
 //     tableData.textContent = (myLibrary[i].title);
 // }
 
+
+//submitting functionality 
+
+function submit(){
+    const title = document.getElementById("bookTitle").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    let addingBook = new Book(title,author,pages);
+    addBookToLibrary(addingBook);
+}
+
+const submitButton = document.querySelector(".submit");
+
+submitButton.addEventListener("click", function() {
+    submit();
+    hideForm();
+    addToTable()
+})
 
 
