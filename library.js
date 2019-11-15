@@ -22,9 +22,10 @@ addBookToLibrary(secondBook);
 
 // Render Table method
 function render(table, library) {
-  for (let book of library) {
+  for (const book of library) {
     const row = table.insertRow();
-    for (let key in book) {
+    for (const key in book) {
+    //book.forEach(key => {
       const cell = row.insertCell();
       if (key === 'status') {
         const button = document.createElement('BUTTON');
@@ -39,7 +40,7 @@ function render(table, library) {
         const text = document.createTextNode(book[key]);
         cell.appendChild(text);
       }
-    }
+    }//);
   }
 }
 const table = document.querySelector('table');
@@ -49,7 +50,8 @@ render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
-  for (let key in book) {
+ // for (let key in book) {
+  Object.keys(book).forEach((key) => {
     const cell = row.insertCell();
     if (key === 'status') {
       const button = document.createElement('BUTTON');
@@ -67,74 +69,62 @@ function addToTable(table, book) {
       const text = document.createTextNode(book[key]);
       cell.appendChild(text);
     }
-  }
+  });
 }
 // delete book functionality
 const thead = document.querySelector('thead');
-thead.addEventListener('click', function(e) {
+thead.addEventListener('click',(e) => {
   if (e.target.className === 'delete') {
     const td = e.target.parentElement;
     const tr = td.parentElement;
     tr.parentNode.removeChild(tr);
   }
 });
-
 // changing status from read to unread
-
 thead.addEventListener('click', function(e) {
-  const statusText = document.querySelectorAll;
   if (e.target.className === 'statusButton') {
     e.target.innerHTML = 'read';
     e.target.classList.add('selected');
-  }
-  else if (e.target.innerHTML == 'read') {
+  } else if (e.target.innerHTML === 'read') {
     e.target.innerHTML = 'unread';
-    e.target.classList.remove('selected');    
+    e.target.classList.remove('selected');
   }
 });
-
-
-
-
-
-//Show the book form
-let hiddenForm = document.querySelector(".hiddenForm")
-let addButton = document.querySelector(".add");
-let showForm = function(){
-  hiddenForm.style.display = "block";
+// Show the book form
+const hiddenForm = document.querySelector('.hiddenForm')
+const addButton = document.querySelector('.add');
+const showForm = function() {
+  hiddenForm.style.display = 'block';
 }
-addButton.addEventListener("click", showForm)
+addButton.addEventListener('click', showForm)
 
-//Hide the book form 
+// Hide the book form 
 
-let cancelButton = document.querySelector(".cancel");
-let hideForm = function(){
-  hiddenForm.style.display = "none";
+const cancelButton = document.querySelector('.cancel');
+let hideForm = () => {
+  hiddenForm.style.display = 'none';
 }
-cancelButton.addEventListener("click", hideForm)
-
-
-
+cancelButton.addEventListener('click', hideForm)
 // submit a new book 
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    let status = document.getElementById("statusValue");
-    let selectedStatus = status.options[status.selectedIndex].value;
+    const status = document.getElementById("statusValue");
+    const selectedStatus = status.options[status.selectedIndex].value;
     let submittedBook = new Book(title,author,pages,selectedStatus);
     return submittedBook
 }
-function submit(){
+function submit() {
     addBookToLibrary(submittedBook());
-    addToTable(table, submittedBook())
+    addToTable(table, submittedBook());
 }
 
-const submitButton = document.querySelector(".submit");
+const submitButton = document.querySelector('.submit');
 
-submitButton.addEventListener("click", function() {
+submitButton.addEventListener('click', function() {
     submit();
     hideForm();
-})
+});
 
 
