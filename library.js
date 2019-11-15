@@ -25,7 +25,7 @@ function render(table, library) {
   for (const book of library) {
     const row = table.insertRow();
     for (const key in book) {
-    //book.forEach(key => {
+    // book.forEach(key => {
       const cell = row.insertCell();
       if (key === 'status') {
         const button = document.createElement('BUTTON');
@@ -40,7 +40,7 @@ function render(table, library) {
         const text = document.createTextNode(book[key]);
         cell.appendChild(text);
       }
-    }//);
+    }// );
   }
 }
 const table = document.querySelector('table');
@@ -50,8 +50,8 @@ render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
-  for(let i = 0; i< Object.keys(book).length; i++){
-    let key = Object.keys(book)[i]
+  for (let i = 0; i < Object.keys(book).length; i+=1 ) {
+    const key = Object.keys(book)[i];
  //for (let key in book) {
   //Object.keys(book).forEach((key) => {
     //if (book.hasOwnProperty(key)){
@@ -77,7 +77,7 @@ function addToTable(table, book) {
 }
 // delete book functionality
 const thead = document.querySelector('thead');
-thead.addEventListener('click',(e) => {
+thead.addEventListener('click', (e) => {
   if (e.target.className === 'delete') {
     const td = e.target.parentElement;
     const tr = td.parentElement;
@@ -85,7 +85,7 @@ thead.addEventListener('click',(e) => {
   }
 });
 // changing status from read to unread
-thead.addEventListener('click', function(e) {
+thead.addEventListener('click', (e) => {
   if (e.target.className === 'statusButton') {
     e.target.innerHTML = 'read';
     e.target.classList.add('selected');
@@ -95,11 +95,11 @@ thead.addEventListener('click', function(e) {
   }
 });
 // Show the book form
-const hiddenForm = document.querySelector('.hiddenForm')
+const hiddenForm = document.querySelector('.hiddenForm');
 const addButton = document.querySelector('.add');
-const showForm = function() {
+const showForm = () => {
   hiddenForm.style.display = 'block';
-}
+};
 addButton.addEventListener('click', showForm)
 
 // Hide the book form 
