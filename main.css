@@ -16,3 +16,13 @@ body{
 .selected{
     background: rgb(80, 212, 80);
 }
+
+button{
+    border-radius: 5px;
+    margin: 5px;
+    
+}
+
+button:focus {
+    outline:0;
+}

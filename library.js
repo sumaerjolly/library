@@ -31,14 +31,22 @@ function render(table, library) {
             let button = document.createElement("BUTTON");
             button.innerHTML = book[key];
             cell.appendChild(button);
+            let deleteCell = document.createElement("BUTTON");
+            deleteCell.innerHTML = "Delete";
+            deleteCell.style.background = "red";
+            deleteCell.style.color = "white";
+            deleteCell.classList.add("delete");
+            cell.appendChild(deleteCell);
+            
         }else{
             let text = document.createTextNode(book[key]);
             cell.appendChild(text);
         }
         
+        
       }
     }
-  }
+}
   let table = document.querySelector("table");
   render(table, myLibrary);
   let selectedButton = document.querySelectorAll("button")
@@ -57,6 +65,8 @@ function render(table, library) {
 //     })
 // }  
 
+//read unread fucntionality 
+
   selectedButton.forEach(btn => btn.addEventListener("click", function(){
     if(this.textContent == "read"){
         this.classList.remove("selected");
@@ -68,6 +78,19 @@ function render(table, library) {
     }
    
 }));
+
+//delete book functionality 
+
+let deleteItems = document.querySelectorAll(".delete");
+
+deleteItems.forEach(function(item){
+    item.addEventListener('click',(e) => {
+        const td = e.target.parentElement;
+        const tr = td.parentElement;
+        tr.parentNode.removeChild(tr);
+    })
+})
+
   
 
 
