@@ -23,62 +23,62 @@ addBookToLibrary(secondBook);
 // Render Table method
 function render(table, library) {
   for (let book of library) {
-    let row = table.insertRow();
+    const row = table.insertRow();
     for (let key in book) {
-      let cell = row.insertCell();
-      if(key === "status"){
-        let button = document.createElement("BUTTON");
+      const cell = row.insertCell();
+      if (key === 'status') {
+        const button = document.createElement('BUTTON');
         button.innerHTML = book[key];
-        button.classList.add("statusButton")
+        button.classList.add('statusButton');
         cell.appendChild(button);
-        let deleteCell = document.createElement("BUTTON");
-        deleteCell.innerHTML = "Delete";
-        deleteCell.classList.add("delete");
-        cell.appendChild(deleteCell);  
-      }else{
-        let text = document.createTextNode(book[key]);
-          cell.appendChild(text);
-        }  
+        const deleteCell = document.createElement('BUTTON');
+        deleteCell.innerHTML = 'Delete';
+        deleteCell.classList.add('delete');
+        cell.appendChild(deleteCell);
+      } else {
+        const text = document.createTextNode(book[key]);
+        cell.appendChild(text);
+      }
     }
   }
 }
-let table = document.querySelector("table");
+const table = document.querySelector('table');
 render(table, myLibrary);
 
 
 // Add a book to the table method
-  function addToTable(table,book){
-    let row = table.insertRow();
-    for (let key in book) {
-        let cell = row.insertCell();
-        if(key === "status"){
-            let button = document.createElement("BUTTON");
-            button.innerHTML = book[key];
-            if (button.innerHTML === "read"){
-                button.classList.add("selected");
-            }
-            button.classList.add("statusButton")
-            cell.appendChild(button);
-            let deleteCell = document.createElement("BUTTON");
-            deleteCell.innerHTML = "Delete";
-            deleteCell.classList.add("delete");
-            cell.appendChild(deleteCell);
-            
-        }else{
-            let text = document.createTextNode(book[key]);
-            cell.appendChild(text);
+function addToTable(table, book) {
+  let row = table.insertRow();
+  for (let key in book) {
+    let cell = row.insertCell();
+    if(key === "status"){
+        let button = document.createElement("BUTTON");
+        button.innerHTML = book[key];
+        if (button.innerHTML === "read"){
+            button.classList.add("selected");
         }
+        button.classList.add("statusButton")
+        cell.appendChild(button);
+        const deleteCell = document.createElement('BUTTON');
+        deleteCell.innerHTML = 'Delete';
+        deleteCell.classList.add('delete');
+        cell.appendChild(deleteCell);
+            
+    }else {
+        const text = document.createTextNode(book[key]);
+        cell.appendChild(text);
+    }
   }
 
-  }
+}
 // delete book functionality 
 
-let thead = document.querySelector("thead");
+const thead = document.querySelector('thead');
 thead.addEventListener("click", function(e){
-    if(e.target.className == "delete"){
-        const td = e.target.parentElement;
-        const tr = td.parentElement;
-        tr.parentNode.removeChild(tr);
+    if(e.target.className == 'delete'){
+      const td = e.target.parentElement;
+      const tr = td.parentElement;
+      tr.parentNode.removeChild(tr);
     }   
 })
 
