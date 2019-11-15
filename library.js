@@ -24,8 +24,8 @@ addBookToLibrary(secondBook);
 function render(table, library) {
   for (const book of library) {
     const row = table.insertRow();
-    for (const key in book) {
-    // book.forEach(key => {
+    for (let i = 0; i < Object.keys(book).length; i += 1) {
+      const key = Object.keys(book)[i];
       const cell = row.insertCell();
       if (key === 'status') {
         const button = document.createElement('BUTTON');
@@ -40,9 +40,10 @@ function render(table, library) {
         const text = document.createTextNode(book[key]);
         cell.appendChild(text);
       }
-    }// );
+    }
   }
 }
+
 const table = document.querySelector('table');
 render(table, myLibrary);
 
