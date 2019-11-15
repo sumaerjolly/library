@@ -1,5 +1,7 @@
 const myLibrary = [];
 
+
+// Book Class 
 function Book(title,author,pages,status = "unread") {
     this.title = title;
     this.author = author;
@@ -10,6 +12,7 @@ function Book(title,author,pages,status = "unread") {
 let newBook = new Book("Test Book","Othmane","100");
 let secondBook = new Book("Second Book","Sumaer","100");
 
+//Add book to library Function
 function addBookToLibrary(book) {
     myLibrary.push(book)
 }
@@ -17,6 +20,9 @@ function addBookToLibrary(book) {
 addBookToLibrary(newBook);
 addBookToLibrary(secondBook);
 
+
+
+// Render Table method 
 function render(table, library) {
     for (let book of library) {
       let row = table.insertRow();
@@ -41,9 +47,11 @@ function render(table, library) {
       }
     }
 }
-  let table = document.querySelector("table");
-  render(table, myLibrary);
+let table = document.querySelector("table");
+render(table, myLibrary);
 
+
+// Add a book to the table method
   function addToTable(table,book){
     let row = table.insertRow();
     for (let key in book) {
@@ -51,6 +59,9 @@ function render(table, library) {
         if(key === "status"){
             let button = document.createElement("BUTTON");
             button.innerHTML = book[key];
+            if (button.innerHTML === "read"){
+                button.classList.add("selected");
+            }
             button.classList.add("statusButton")
             cell.appendChild(button);
             let deleteCell = document.createElement("BUTTON");
@@ -103,7 +114,7 @@ let showForm = function(){
 }
 addButton.addEventListener("click", showForm)
 
-//Hide the form 
+//Hide the book form 
 
 let cancelButton = document.querySelector(".cancel");
 let hideForm = function(){
@@ -113,23 +124,13 @@ cancelButton.addEventListener("click", hideForm)
 
 
 
-//submitting functionality 
-// const getRadioValue = function(){
-//     const statusNode = document.querySelectorAll('.form-check-input');
-//     for (let i = 0; i <statusNode.length; i+=1){
-//         if(statusNode[i].checked){
-//             return statusNode[i].value
-//         }
-//     }
-// }
-//console.log(getRadioValue())
+// submit a new book 
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     let status = document.getElementById("statusValue");
     let selectedStatus = status.options[status.selectedIndex].value;
-    console.log(selectedStatus);
     let submittedBook = new Book(title,author,pages,selectedStatus);
     return submittedBook
 }
