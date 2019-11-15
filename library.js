@@ -122,9 +122,7 @@ function submit() {
 
 const submitButton = document.querySelector('.submit');
 
-submitButton.addEventListener('click', function() {
+submitButton.addEventListener('click', () => {
   submit();
   hideForm();
 });
-
-
