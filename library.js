@@ -72,7 +72,7 @@ function addToTable(table, book) {
 // delete book functionality
 const thead = document.querySelector('thead');
 thead.addEventListener('click', function(e) {
-  if (e.target.className == 'delete') {
+  if (e.target.className === 'delete') {
     const td = e.target.parentElement;
     const tr = td.parentElement;
     tr.parentNode.removeChild(tr);
@@ -81,17 +81,17 @@ thead.addEventListener('click', function(e) {
 
 // changing status from read to unread
 
-thead.addEventListener("click",function(e){
-    let statusText = document.querySelectorAll
-    if(e.target.className == "statusButton"){
-       e.target.innerHTML = "read";
-       e.target.classList.add("selected");
-    }
-    else if (e.target.innerHTML == "read"){
-        e.target.innerHTML = "unread";
-        e.target.classList.remove("selected");    
-    }
-})
+thead.addEventListener('click', function(e) {
+  const statusText = document.querySelectorAll;
+  if (e.target.className === 'statusButton') {
+    e.target.innerHTML = 'read';
+    e.target.classList.add('selected');
+  }
+  else if (e.target.innerHTML == 'read') {
+    e.target.innerHTML = 'unread';
+    e.target.classList.remove('selected');    
+  }
+});
 
 
 
