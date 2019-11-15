@@ -23,7 +23,7 @@ addBookToLibrary(secondBook);
 // Render Table method
 function render(table, library) {
   for (let i = 0; i < library.length; i += 1) {
-    const book = library[i]
+    const book = library[i];
     const row = table.insertRow();
     for (let i = 0; i < Object.keys(book).length; i += 1) {
       const key = Object.keys(book)[i];
