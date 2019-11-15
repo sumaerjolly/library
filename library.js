@@ -22,7 +22,8 @@ addBookToLibrary(secondBook);
 
 // Render Table method
 function render(table, library) {
-  for (const book of library) {
+  for (let bookIndex in library) {
+    let book = library[bookIndex]
     const row = table.insertRow();
     for (const key in book) {
     //book.forEach(key => {
@@ -45,8 +46,6 @@ function render(table, library) {
 }
 const table = document.querySelector('table');
 render(table, myLibrary);
-
-
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
