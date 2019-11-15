@@ -50,8 +50,9 @@ render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
- // for (let key in book) {
-  Object.keys(book).forEach((key) => {
+ for (let key in book) {
+  //Object.keys(book).forEach((key) => {
+    if (book.hasOwnProperty(key)){
     const cell = row.insertCell();
     if (key === 'status') {
       const button = document.createElement('BUTTON');
@@ -69,7 +70,8 @@ function addToTable(table, book) {
       const text = document.createTextNode(book[key]);
       cell.appendChild(text);
     }
-  });
+  }
+  }//);
 }
 // delete book functionality
 const thead = document.querySelector('thead');
