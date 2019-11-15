@@ -80,15 +80,18 @@ thead.addEventListener("click", function(e){
 // changing status from read to unread 
 
 thead.addEventListener("click",function(e){
-    if(e.target.textContent == "unread"){
-       e.target.textContent = "read";
+    let statusText = document.querySelectorAll
+    if(e.target.className == "statusButton"){
+       e.target.innerHTML = "read";
        e.target.classList.add("selected");
     }
-    else{
-        e.target.textContent = "unread";
-        e.target.classList.remove("selected");
+    else if (e.target.innerHTML == "read"){
+        e.target.innerHTML = "unread";
+        e.target.classList.remove("selected");    
     }
 })
+
+
 
 
 
@@ -111,30 +114,23 @@ cancelButton.addEventListener("click", hideForm)
 
 
 //submitting functionality 
-const getRadioValue = function(){
-    const statusNode = document.querySelectorAll('.form-check-input');
-    for (let i = 0; i <statusNode.length; i+=1){
-        if(statusNode[i].checked){
-            return statusNode[i].value
-        }
-    }
-}
+// const getRadioValue = function(){
+//     const statusNode = document.querySelectorAll('.form-check-input');
+//     for (let i = 0; i <statusNode.length; i+=1){
+//         if(statusNode[i].checked){
+//             return statusNode[i].value
+//         }
+//     }
+// }
 //console.log(getRadioValue())
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    const radioValue = getRadioValue();
-    
-    // var status_value;
-    // if(status == "read"){
-    //     status_value = document.getElementById('status1').value;
-    // }
-    // else{
-    //     status_value = document.getElementById('status2').value;
-    // }
-    
-    let submittedBook = new Book(title,author,pages,radioValue);
+    let status = document.getElementById("statusValue");
+    let selectedStatus = status.options[status.selectedIndex].value;
+    console.log(selectedStatus);
+    let submittedBook = new Book(title,author,pages,selectedStatus);
     return submittedBook
 }
 function submit(){
