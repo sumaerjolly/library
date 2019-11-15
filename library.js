@@ -111,11 +111,21 @@ cancelButton.addEventListener("click", hideForm)
 
 
 //submitting functionality 
+const getRadioValue = function(){
+    const statusNode = document.querySelectorAll('.form-check-input');
+    for (let i = 0; i <statusNode.length; i+=1){
+        if(statusNode[i].checked){
+            return statusNode[i].value
+        }
+    }
+}
+//console.log(getRadioValue())
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    // const status = document.getElementById('statusdiv');
+    const radioValue = getRadioValue();
+    
     // var status_value;
     // if(status == "read"){
     //     status_value = document.getElementById('status1').value;
@@ -123,13 +133,13 @@ function submittedBook(){
     // else{
     //     status_value = document.getElementById('status2').value;
     // }
-    let submittedBook = new Book(title,author,pages);
+    
+    let submittedBook = new Book(title,author,pages,radioValue);
     return submittedBook
 }
 function submit(){
     addBookToLibrary(submittedBook());
     addToTable(table, submittedBook())
-    
 }
 
 const submitButton = document.querySelector(".submit");
