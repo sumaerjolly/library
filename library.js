@@ -68,20 +68,18 @@ function addToTable(table, book) {
       cell.appendChild(text);
     }
   }
-
 }
 // delete book functionality
 const thead = document.querySelector('thead');
-thead.addEventListener("click", function(e){
-    if(e.target.className == 'delete'){
-      const td = e.target.parentElement;
-      const tr = td.parentElement;
-      tr.parentNode.removeChild(tr);
-    }   
-})
+thead.addEventListener('click', function(e) {
+  if (e.target.className == 'delete') {
+    const td = e.target.parentElement;
+    const tr = td.parentElement;
+    tr.parentNode.removeChild(tr);
+  }
+});
 
-
-// changing status from read to unread 
+// changing status from read to unread
 
 thead.addEventListener("click",function(e){
     let statusText = document.querySelectorAll
