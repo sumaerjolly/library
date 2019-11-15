@@ -50,11 +50,8 @@ render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
-  for (let i = 0; i < Object.keys(book).length; i+=1 ) {
+  for (let i = 0; i < Object.keys(book).length; i +=1) {
     const key = Object.keys(book)[i];
- //for (let key in book) {
-  //Object.keys(book).forEach((key) => {
-    //if (book.hasOwnProperty(key)){
     const cell = row.insertCell();
     if (key === 'status') {
       const button = document.createElement('BUTTON');
@@ -72,10 +69,9 @@ function addToTable(table, book) {
       const text = document.createTextNode(book[key]);
       cell.appendChild(text);
     }
-  //}
-  }//);
+  }
 }
-// delete book functionality
+//  delete book functionality
 const thead = document.querySelector('thead');
 thead.addEventListener('click', (e) => {
   if (e.target.className === 'delete') {
@@ -100,15 +96,15 @@ const addButton = document.querySelector('.add');
 const showForm = () => {
   hiddenForm.style.display = 'block';
 };
-addButton.addEventListener('click', showForm)
+addButton.addEventListener('click', showForm);
 
-// Hide the book form 
+// Hide the book form
 
 const cancelButton = document.querySelector('.cancel');
-let hideForm = () => {
+const hideForm = () => {
   hiddenForm.style.display = 'none';
 }
-cancelButton.addEventListener('click', hideForm)
+cancelButton.addEventListener('click', hideForm);
 // submit a new book 
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
@@ -117,7 +113,7 @@ function submittedBook(){
     const status = document.getElementById("statusValue");
     const selectedStatus = status.options[status.selectedIndex].value;
     let submittedBook = new Book(title,author,pages,selectedStatus);
-    return submittedBook
+    return submittedBook;
 }
 function submit() {
     addBookToLibrary(submittedBook());
