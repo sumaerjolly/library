@@ -1,26 +1,24 @@
 const myLibrary = [];
 
 
-// Book Class 
-function Book(title,author,pages,status = "unread") {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+// Book Class
+function Book(title, author, pages, status = 'unread') {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.status = status;
 }
 
-let newBook = new Book("Test Book","Othmane","100");
-let secondBook = new Book("Second Book","Sumaer","100");
+const newBook = new Book('Test Book', 'Othmane', '100');
+const secondBook = new Book('Second Book', 'Sumaer', '100');
 
-//Add book to library Function
+// Add book to library Function
 function addBookToLibrary(book) {
-    myLibrary.push(book)
+  myLibrary.push(book);
 }
 
 addBookToLibrary(newBook);
 addBookToLibrary(secondBook);
-
-
 
 // Render Table method 
 function render(table, library) {
