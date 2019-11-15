@@ -50,7 +50,25 @@ function render(table, library) {
   render(table, myLibrary);
 
   function addToTable(table,book){
-    
+    let row = table.insertRow();
+    for (let key in book) {
+        let cell = row.insertCell();
+        if(key === "status"){
+            let button = document.createElement("BUTTON");
+            button.innerHTML = book[key];
+            button.classList.add("statusButton")
+            cell.appendChild(button);
+            let deleteCell = document.createElement("BUTTON");
+            deleteCell.innerHTML = "Delete";
+            deleteCell.classList.add("delete");
+            cell.appendChild(deleteCell);
+            
+        }else{
+            let text = document.createTextNode(book[key]);
+            cell.appendChild(text);
+        }
+  }
+
   }
   let statusButton = document.querySelectorAll(".statusButton")
   
@@ -88,7 +106,7 @@ function render(table, library) {
 let deleteItems = document.querySelectorAll(".delete");
 
 deleteItems.forEach(function(item){
-    item.addEventListener('click',(e) => {
+    item.addEventListener('click',function(e) {
         const td = e.target.parentElement;
         const tr = td.parentElement;
         tr.parentNode.removeChild(tr);
@@ -149,13 +167,17 @@ cancelButton.addEventListener("click", hideForm)
 
 
 //submitting functionality 
-
-function submit(){
+function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    let addingBook = new Book(title,author,pages);
-    addBookToLibrary(addingBook);
+    let submittedBook = new Book(title,author,pages);
+    return submittedBook
+}
+function submit(){
+    addBookToLibrary(submittedBook());
+    addToTable(table, submittedBook())
+    
 }
 
 const submitButton = document.querySelector(".submit");
@@ -163,7 +185,6 @@ const submitButton = document.querySelector(".submit");
 submitButton.addEventListener("click", function() {
     submit();
     hideForm();
-    addToTable()
 })
 
 
