@@ -20,30 +20,27 @@ function addBookToLibrary(book) {
 addBookToLibrary(newBook);
 addBookToLibrary(secondBook);
 
-// Render Table method 
+// Render Table method
 function render(table, library) {
-    for (let book of library) {
-      let row = table.insertRow();
-      for (let key in book) {
-        let cell = row.insertCell();
-        if(key === "status"){
-            let button = document.createElement("BUTTON");
-            button.innerHTML = book[key];
-            button.classList.add("statusButton")
-            cell.appendChild(button);
-            let deleteCell = document.createElement("BUTTON");
-            deleteCell.innerHTML = "Delete";
-            deleteCell.classList.add("delete");
-            cell.appendChild(deleteCell);
-            
-        }else{
-            let text = document.createTextNode(book[key]);
-            cell.appendChild(text);
-        }
-        
-        
-      }
+  for (let book of library) {
+    let row = table.insertRow();
+    for (let key in book) {
+      let cell = row.insertCell();
+      if(key === "status"){
+        let button = document.createElement("BUTTON");
+        button.innerHTML = book[key];
+        button.classList.add("statusButton")
+        cell.appendChild(button);
+        let deleteCell = document.createElement("BUTTON");
+        deleteCell.innerHTML = "Delete";
+        deleteCell.classList.add("delete");
+        cell.appendChild(deleteCell);  
+      }else{
+        let text = document.createTextNode(book[key]);
+          cell.appendChild(text);
+        }  
     }
+  }
 }
 let table = document.querySelector("table");
 render(table, myLibrary);
