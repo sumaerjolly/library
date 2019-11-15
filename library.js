@@ -50,7 +50,7 @@ render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
-  for (let i = 0; i < Object.keys(book).length; i +=1) {
+  for (let i = 0; i < Object.keys(book).length; i += 1) {
     const key = Object.keys(book)[i];
     const cell = row.insertCell();
     if (key === 'status') {
