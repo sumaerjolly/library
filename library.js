@@ -103,28 +103,28 @@ addButton.addEventListener('click', showForm);
 const cancelButton = document.querySelector('.cancel');
 const hideForm = () => {
   hiddenForm.style.display = 'none';
-}
+};
 cancelButton.addEventListener('click', hideForm);
-// submit a new book 
-function submittedBook(){
-    const title = document.getElementById("bookTitle").value;
-    const author = document.getElementById("author").value;
-    const pages = document.getElementById("pages").value;
-    const status = document.getElementById("statusValue");
-    const selectedStatus = status.options[status.selectedIndex].value;
-    let submittedBook = new Book(title,author,pages,selectedStatus);
-    return submittedBook;
+// submit a new book
+function submittedBook() {
+  const title = document.getElementById('bookTitle').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const status = document.getElementById('statusValue');
+  const selectedStatus = status.options[status.selectedIndex].value;
+  const submittedBook = new Book(title, author, pages, selectedStatus);
+  return submittedBook;
 }
 function submit() {
-    addBookToLibrary(submittedBook());
-    addToTable(table, submittedBook());
+  addBookToLibrary(submittedBook());
+  addToTable(table, submittedBook());
 }
 
 const submitButton = document.querySelector('.submit');
 
 submitButton.addEventListener('click', function() {
-    submit();
-    hideForm();
+  submit();
+  hideForm();
 });
 
 
