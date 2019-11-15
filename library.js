@@ -52,27 +52,25 @@ function addToTable(table, book) {
   for (let key in book) {
     const cell = row.insertCell();
     if (key === 'status') {
-      let button = document.createElement("BUTTON");
+      const button = document.createElement('BUTTON');
       button.innerHTML = book[key];
-      if (button.innerHTML === "read"){
-        button.classList.add("selected");
+      if (button.innerHTML === 'read') {
+        button.classList.add('selected');
       }
-      button.classList.add("statusButton")
+      button.classList.add('statusButton');
       cell.appendChild(button);
       const deleteCell = document.createElement('BUTTON');
       deleteCell.innerHTML = 'Delete';
       deleteCell.classList.add('delete');
       cell.appendChild(deleteCell);
-            
-    }else {
-        const text = document.createTextNode(book[key]);
-        cell.appendChild(text);
+    } else {
+      const text = document.createTextNode(book[key]);
+      cell.appendChild(text);
     }
   }
 
 }
-// delete book functionality 
-
+// delete book functionality
 const thead = document.querySelector('thead');
 thead.addEventListener("click", function(e){
     if(e.target.className == 'delete'){
