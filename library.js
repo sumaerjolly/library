@@ -1,8 +1,3 @@
-// var tableRow = document.querySelectorAll("tr");
-// var tableData = document.querySelectorAll("td");
-// var addButton = document.querySelector(".add");
-
-
 const myLibrary = [];
 
 function Book(title,author,pages,status = "unread") {
@@ -70,75 +65,32 @@ function render(table, library) {
   }
 
   }
-  let statusButton = document.querySelectorAll(".statusButton")
-  
-//   for(let i = 0; i < selectedButton.length; i++){
-//     selectedButton[i].addEventListener("click",function(){
-//         if(this.textContent === "read"){
-//             this.classList.remove("selected");
-//             this.textContent = "unread";
-//         }
-//         else{
-//             this.classList.add("selected");
-//             this.textContent = "read";
-//         }
-       
-//     })
-// }  
+// delete book functionality 
 
-//read unread fucntionality 
-
-  statusButton.forEach(btn => btn.addEventListener("click", function(){
-    if(this.textContent == "read"){
-        this.classList.remove("selected");
-        this.textContent = "unread";
-        
-    }
-    else{
-        this.classList.add("selected");
-        this.textContent = "read";
-    }
-   
-}));
-
-//delete book functionality 
-
-let deleteItems = document.querySelectorAll(".delete");
-
-deleteItems.forEach(function(item){
-    item.addEventListener('click',function(e) {
+let thead = document.querySelector("thead");
+thead.addEventListener("click", function(e){
+    if(e.target.className == "delete"){
         const td = e.target.parentElement;
         const tr = td.parentElement;
         tr.parentNode.removeChild(tr);
-    })
+    }   
 })
 
-// display a form
 
-//function addForm() {
-//   const bookForm = document.createElement("FORM");
-//   bookForm.setAttribute("id", "myForm");
-//   document.body.appendChild(bookForm);
+// changing status from read to unread 
 
-//   const titleLabel = document.createElement("label");
-//   titleLabel.textContent = "Book title:"
-//   titleLabel.addClassName("label");
-//   //title.setAttribute("for", "bookTitle");
-//   document.getElementById("myForm").appendChild(titleLabel);
+thead.addEventListener("click",function(e){
+    if(e.target.textContent == "unread"){
+       e.target.textContent = "read";
+       e.target.classList.add("selected");
+    }
+    else{
+        e.target.textContent = "unread";
+        e.target.classList.remove("selected");
+    }
+})
 
-//   const title = document.createElement("INPUT");
-//   //title.setAttribute("id", "bookTitle");
-//   title.setAttribute("type", "text");
-//   title.setAttribute("placeholder","Add book title");
-//   document.getElementById("myForm").appendChild(title);
 
-//   const author = document.createElement("INPUT");
-//   author.setAttribute("type", "text");
-//   author.setAttribute("placeholder","Add author name");
-//   document.getElementById("myForm").appendChild(author);
-// }
-
-//addForm();
 
 //Show the book form
 let hiddenForm = document.querySelector(".hiddenForm")
@@ -148,7 +100,7 @@ let showForm = function(){
 }
 addButton.addEventListener("click", showForm)
 
-//Hide the form data
+//Hide the form 
 
 let cancelButton = document.querySelector(".cancel");
 let hideForm = function(){
@@ -157,20 +109,20 @@ let hideForm = function(){
 cancelButton.addEventListener("click", hideForm)
 
 
-// addButton.addEventListener("click",function(){
-    
-// })
-
-// for(var i = 0; i < myLibrary.length; i++){
-//     tableData.textContent = (myLibrary[i].title);
-// }
-
 
 //submitting functionality 
 function submittedBook(){
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
+    // const status = document.getElementById('statusdiv');
+    // var status_value;
+    // if(status == "read"){
+    //     status_value = document.getElementById('status1').value;
+    // }
+    // else{
+    //     status_value = document.getElementById('status2').value;
+    // }
     let submittedBook = new Book(title,author,pages);
     return submittedBook
 }
