@@ -25,8 +25,8 @@ function render(table, library) {
   for (let bookIndex in library) {
     let book = library[bookIndex]
     const row = table.insertRow();
-    for (const key in book) {
-    //book.forEach(key => {
+    for (let i = 0; i < Object.keys(book).length; i += 1) {
+      const key = Object.keys(book)[i];
       const cell = row.insertCell();
       if (key === 'status') {
         const button = document.createElement('BUTTON');
@@ -41,19 +41,17 @@ function render(table, library) {
         const text = document.createTextNode(book[key]);
         cell.appendChild(text);
       }
-    }//);
+    }
   }
 }
+
 const table = document.querySelector('table');
 render(table, myLibrary);
 // Add a book to the table method
 function addToTable(table, book) {
   const row = table.insertRow();
-  for(let i = 0; i< Object.keys(book).length; i++){
-    let key = Object.keys(book)[i]
- //for (let key in book) {
-  //Object.keys(book).forEach((key) => {
-    //if (book.hasOwnProperty(key)){
+  for (let i = 0; i < Object.keys(book).length; i += 1) {
+    const key = Object.keys(book)[i];
     const cell = row.insertCell();
     if (key === 'status') {
       const button = document.createElement('BUTTON');
@@ -71,12 +69,11 @@ function addToTable(table, book) {
       const text = document.createTextNode(book[key]);
       cell.appendChild(text);
     }
-  //}
-  }//);
+  }
 }
-// delete book functionality
+//  delete book functionality
 const thead = document.querySelector('thead');
-thead.addEventListener('click',(e) => {
+thead.addEventListener('click', (e) => {
   if (e.target.className === 'delete') {
     const td = e.target.parentElement;
     const tr = td.parentElement;
@@ -84,7 +81,7 @@ thead.addEventListener('click',(e) => {
   }
 });
 // changing status from read to unread
-thead.addEventListener('click', function(e) {
+thead.addEventListener('click', (e) => {
   if (e.target.className === 'statusButton') {
     e.target.innerHTML = 'read';
     e.target.classList.add('selected');
@@ -94,40 +91,38 @@ thead.addEventListener('click', function(e) {
   }
 });
 // Show the book form
-const hiddenForm = document.querySelector('.hiddenForm')
+const hiddenForm = document.querySelector('.hiddenForm');
 const addButton = document.querySelector('.add');
-const showForm = function() {
+const showForm = () => {
   hiddenForm.style.display = 'block';
-}
-addButton.addEventListener('click', showForm)
+};
+addButton.addEventListener('click', showForm);
 
-// Hide the book form 
+// Hide the book form
 
 const cancelButton = document.querySelector('.cancel');
-let hideForm = () => {
+const hideForm = () => {
   hiddenForm.style.display = 'none';
-}
-cancelButton.addEventListener('click', hideForm)
-// submit a new book 
-function submittedBook(){
-    const title = document.getElementById("bookTitle").value;
-    const author = document.getElementById("author").value;
-    const pages = document.getElementById("pages").value;
-    const status = document.getElementById("statusValue");
-    const selectedStatus = status.options[status.selectedIndex].value;
-    let submittedBook = new Book(title,author,pages,selectedStatus);
-    return submittedBook
+};
+cancelButton.addEventListener('click', hideForm);
+// submit a new book
+function submittedBook() {
+  const title = document.getElementById('bookTitle').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const status = document.getElementById('statusValue');
+  const selectedStatus = status.options[status.selectedIndex].value;
+  const submittedBook = new Book(title, author, pages, selectedStatus);
+  return submittedBook;
 }
 function submit() {
-    addBookToLibrary(submittedBook());
-    addToTable(table, submittedBook());
+  addBookToLibrary(submittedBook());
+  addToTable(table, submittedBook());
 }
 
 const submitButton = document.querySelector('.submit');
 
-submitButton.addEventListener('click', function() {
-    submit();
-    hideForm();
+submitButton.addEventListener('click', () => {
+  submit();
+  hideForm();
 });
-
-
