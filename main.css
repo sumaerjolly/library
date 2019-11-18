@@ -1,0 +1,35 @@
+body{
+    margin: 20px;
+}
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+}
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+}
+
+.selected{
+    background: rgb(80, 212, 80);
+}
+
+button{
+    border-radius: 5px;
+    margin: 5px;   
+}
+
+button:focus {
+    outline:0;
+}
+
+.delete{
+    background: red;
+    color: white;
+}
+.hiddenForm{
+    display: none;
+}
