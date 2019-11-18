@@ -11,7 +11,7 @@ Book Library is a collaborative project by [Sumaer Jolly](https://github.com/sum
 
 ## Usage
 
-The live version of the webapp can be found 
+The live version of the webapp can be found [here](https://sumaerjolly.github.io/library/)
 
 > Clone the repository to your local machine
 
