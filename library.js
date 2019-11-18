@@ -1,7 +1,5 @@
 const myLibrary = [];
 
-
-// Book Class
 function Book(title, author, pages, status = 'unread') {
   this.title = title;
   this.author = author;
@@ -12,7 +10,6 @@ function Book(title, author, pages, status = 'unread') {
 const newBook = new Book('Test Book', 'Othmane', '100');
 const secondBook = new Book('Second Book', 'Sumaer', '100');
 
-// Add book to library Function
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
@@ -20,7 +17,6 @@ function addBookToLibrary(book) {
 addBookToLibrary(newBook);
 addBookToLibrary(secondBook);
 
-// Render Table method
 function render(table, library) {
   for (let i = 0; i < library.length; i += 1) {
     const book = library[i];
@@ -47,7 +43,7 @@ function render(table, library) {
 
 const table = document.querySelector('table');
 render(table, myLibrary);
-// Add a book to the table method
+
 function addToTable(table, book) {
   const row = table.insertRow();
   for (let i = 0; i < Object.keys(book).length; i += 1) {
@@ -71,7 +67,7 @@ function addToTable(table, book) {
     }
   }
 }
-//  delete book functionality
+
 const thead = document.querySelector('thead');
 thead.addEventListener('click', (e) => {
   if (e.target.className === 'delete') {
@@ -80,7 +76,7 @@ thead.addEventListener('click', (e) => {
     tr.parentNode.removeChild(tr);
   }
 });
-// changing status from read to unread
+
 thead.addEventListener('click', (e) => {
   if (e.target.className === 'statusButton') {
     e.target.innerHTML = 'read';
@@ -90,7 +86,7 @@ thead.addEventListener('click', (e) => {
     e.target.classList.remove('selected');
   }
 });
-// Show the book form
+
 const hiddenForm = document.querySelector('.hiddenForm');
 const addButton = document.querySelector('.add');
 const showForm = () => {
@@ -98,14 +94,12 @@ const showForm = () => {
 };
 addButton.addEventListener('click', showForm);
 
-// Hide the book form
-
 const cancelButton = document.querySelector('.cancel');
 const hideForm = () => {
   hiddenForm.style.display = 'none';
 };
 cancelButton.addEventListener('click', hideForm);
-// submit a new book
+
 function submittedBook() {
   const title = document.getElementById('bookTitle').value;
   const author = document.getElementById('author').value;
